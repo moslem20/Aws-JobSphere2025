@@ -6,6 +6,7 @@
     <title>JobSphere AI</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/responsive.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1194.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -13,7 +14,7 @@
             <h1>JobSphere AI</h1>
             <nav>
                 <ul>
-                    <li><a href="pages/login.html">Login</a></li>
+                    <li><a href="#" id="aws-login">Login with AWS</a></li>
                     <li><a href="pages/signup.html">Sign Up</a></li>
                     <li><a href="pages/dashboard.html">Dashboard</a></li>
                 </ul>
@@ -33,6 +34,27 @@
         <p>&copy; 2025 JobSphere AI. All rights reserved.</p>
     </footer>
 
-    <script src="scripts/app.js"></script>
+    <!-- Insert the script here before closing body tag -->
+    <script>
+        AWS.config.region = 'us-east-1';  // Replace with your AWS region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'us-east-1:50733054-12d7-4b1d-893f-93076691a0d4'  // Replace with your Identity Pool ID
+        });
+
+        document.getElementById('aws-login').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Replace placeholders with your actual Cognito values
+            const clientId = '5s07t9navs7fo8o09oefutbq3m';  // Your Cognito App Client ID
+            const domain = 'us-east-1fbfkwoqlj.auth.us-east-1';  // Your Cognito domain
+            const redirectUri = 'http://jobsphere-cog.s3-website-us-east-1.amazonaws.com';  // Your S3 website URL
+            
+            // Constructing the login URL correctly
+            const loginUrl = `https://us-east-1fbfkwoqlj.auth.us-east-1.amazoncognito.com/login?client_id=5s07t9navs7fo8o09oefutbq3m&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fd84l1y8p4kdic.cloudfront.net`;
+            
+            // Redirect to Cognito login page
+            window.location.href = loginUrl;
+        });
+    </script>
 </body>
 </html>
