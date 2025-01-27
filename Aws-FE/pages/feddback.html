@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - JobSphere AI</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>JobSphere AI</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="simulation.html">Start Simulation</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="feedback">
+            <h2>Interview Feedback</h2>
+            <div id="feedbackContent">
+                <p><strong>Strengths:</strong> Strong communication, Analytical skills.</p>
+                <p><strong>Areas for Improvement:</strong> Time management, Technical knowledge.</p>
+            </div>
+            <button id="retakeSimulation">Retake Simulation</button>
+        </section>
+    </main>
+    <script>
+        document.getElementById('retakeSimulation').addEventListener('click', function() {
+            window.location.href = 'simulation.html';
+        });
+    </script>
+</body>
+</html>

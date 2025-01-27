@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "role": "Software Engineer"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "role": "Data Analyst"
+    }
+  ],
+  "interview_questions": [
+    {
+      "role": "Software Engineer",
+      "questions": [
+        "What are the SOLID principles?",
+        "Explain the difference between REST and GraphQL.",
+        "What is dependency injection?"
+      ]
+    },
+    {
+      "role": "Data Analyst",
+      "questions": [
+        "What is normalization in databases?",
+        "Explain the difference between SQL and NoSQL.",
+        "What are common data visualization tools?"
+      ]
+    }
+  ]
+}

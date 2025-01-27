@@ -1,0 +1,62 @@
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('JobSphere AI loaded successfully!');
+
+    // Handle login form submission
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            loginUser(email, password);
+        });
+    }
+
+    // Handle signup form submission
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) {
+        signupForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            signupUser(email, password);
+        });
+    }
+
+    // Dark mode toggle
+    const darkModeToggle = document.createElement('button');
+    darkModeToggle.innerText = 'Toggle Dark Mode';
+    darkModeToggle.className = 'toggle-dark-mode';
+    document.body.appendChild(darkModeToggle);
+
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+    });
+
+    // Sidebar toggle functionality
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) {
+        document.querySelector('.close-btn').addEventListener('click', () => {
+            sidebar.style.width = '0';
+        });
+    }
+
+    function loginUser(email, password) {
+        alert(`Logging in user: ${email}`);
+    }
+
+    function signupUser(email, password) {
+        alert(`Signing up user: ${email}`);
+    }
+
+    // Dashboard user greeting
+    const userGreeting = document.getElementById('user-name');
+    if (userGreeting) {
+        userGreeting.innerText = 'John Doe';
+    }
+});
