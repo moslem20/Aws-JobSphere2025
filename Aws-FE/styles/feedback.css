@@ -1,0 +1,96 @@
+/* Feedback Page Styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+    border-bottom: 2px solid #ff9900;
+}
+
+nav ul li a:hover {
+    color: #ff9900;
+}
+
+.feedback-container {
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.feedback-container h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.feedback-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.feedback-card h3 {
+    color: #ff9900;
+    font-size: 1.5rem;
+}
+
+.feedback-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feedback-card ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.2rem;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    margin-top: 20px;
+}

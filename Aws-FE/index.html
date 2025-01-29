@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobSphere AI</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1194.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>JobSphere AI</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" id="aws-login">Login</a></li>
+                    <li><a href="pages/dashboard.html">Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to JobSphere AI</h2>
+            <p>Your AI-powered job interview preparation tool.</p>
+            <a href="pages/simulation.html" class="btn">Start Simulation</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 JobSphere AI. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/aws-login.js"></script>
+</body>
+</html>
+<script>
+    AWS.config.region = 'us-east-1'; // Set AWS region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-east-1:0d52cdf0-28de-42f6-bdb5-c9259d859ed8' // Your Cognito Identity Pool ID
+    });
+
+    document.getElementById('aws-login').addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        // Cognito Configuration
+        const clientId = '6qep6viv8ti3oa4th6l50f9i7v'; // Your Cognito App Client ID
+        const domain = 'us-east-1fbfkwoqlj.auth.us-east-1'; // Your Cognito domain
+        const redirectUri = 'http://jobsphere-cog.s3-website-us-east-1.amazonaws.com'; // Your hosted UI redirect URL
+        
+        // Login URL
+        const loginUrl = `https://us-east-1tedpxle3n.auth.us-east-1.amazoncognito.com/login?client_id=70gcqh6kpo6aaclo1nla9tfqcv&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fstaging.d2nz9kqjvojomv.amplifyapp.com%2F`;
+        
+        // Redirect to Cognito login
+        window.location.href = loginUrl;
+    });
+
+    // After login, extract token & user info
+    window.onload = function () {
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        if (params.has("id_token")) {
+            const idToken = params.get("id_token");
+            
+            // Decode JWT to get user details
+            const payload = JSON.parse(atob(idToken.split('.')[1]));
+            const username = payload["cognito:username"] || "User";
+            
+            // Store username in localStorage
+            localStorage.setItem("loggedInUser", username);
+
+            // Redirect to dashboard
+            window.location.href = "pages/dashboard.html";
+        }
+    };
+</script>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Simulation</title>
+    <style>
+        /* General page styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f8f8;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Header styling */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            font-size: 18px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        header nav a:hover {
+            color: #ff9800;
+        }
+
+        /* Main content styling */
+        main {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Title styling */
+        h2 {
+            font-size: 32px;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        /* Select dropdown styling */
+        select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #f4f4f4;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Textarea styling */
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            outline: none;
+            background-color: #f4f4f4;
+            transition: all 0.3s ease-in-out;
+        }
+
+        textarea:focus {
+            border-color: #ff9800;
+            background-color: #fff;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #e68900;
+        }
+
+        /* Error message styling */
+        #error-message {
+            margin-top: 15px;
+            font-size: 16px;
+            color: red;
+        }
+
+        /* Success message styling */
+        #success-message {
+            margin-top: 15px;
+            font-size: 16px;
+            color: green;
+        }
+
+        /* 🎤 Speech-to-Text Button Styling */
+        .speech-container {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .speech-btn {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            display: inline-block;
+        }
+
+        .speech-btn:hover {
+            background-color: #e68900;
+        }
+
+        .speech-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Question styling */
+        #questionText {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            main {
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            button, .speech-btn {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Interview Simulation</h2>
+
+        <label for="jobRole">Select Job Role:</label>
+        <select id="jobRole">
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Data Analyst">Data Analyst</option>
+        </select>
+
+        <button id="generateQuestions">Generate Interview Questions</button>
+
+        <p id="questionText">What is your greatest strength?</p>
+
+        <div class="speech-container">
+            <button id="speechToTextButton" class="speech-btn">🎤 Start Speaking (Live)</button>
+        </div>
+
+        <textarea id="responseInput" placeholder="Your response will appear here..."></textarea>
+        
+        <button id="submitAnswer">SUBMIT ANSWER</button>
+        <p id="responseMessage" style="color: green; display: none;"></p>
+        <p id="errorMessage" style="color: red; display: none;"></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Interview Simulation. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const speechButton = document.getElementById('speechToTextButton');
+            const responseInput = document.getElementById('responseInput');
+            const generateButton = document.getElementById('generateQuestions');
+            const jobRoleInput = document.getElementById('jobRole');
+            const questionText = document.getElementById('questionText');
+            const submitAnswerButton = document.getElementById('submitAnswer');
+            const responseMessage = document.getElementById('responseMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // ✅ LIVE Speech-to-Text
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = true;
+                recognition.lang = "en-US";
+
+                speechButton.addEventListener('click', () => {
+                    if (speechButton.dataset.listening === "true") {
+                        recognition.stop();
+                        speechButton.dataset.listening = "false";
+                        speechButton.textContent = "🎤 Start Speaking (Live)";
+                    } else {
+                        responseInput.value = "";
+                        recognition.start();
+                        speechButton.dataset.listening = "true";
+                        speechButton.textContent = "🎙 Listening...";
+                    }
+                });
+
+                recognition.onresult = (event) => {
+                    let transcript = "";
+                    for (let i = event.resultIndex; i < event.results.length; i++) {
+                        transcript += event.results[i][0].transcript + " ";
+                    }
+                    responseInput.value = transcript.trim();
+                };
+
+                recognition.onend = () => {
+                    speechButton.dataset.listening = "false";
+                    speechButton.textContent = "🎤 Start Speaking (Live)";
+                };
+            } else {
+                speechButton.disabled = true;
+                speechButton.textContent = "Speech Recognition Not Supported";
+            }
+
+            // ✅ Fetch and Display Questions
+            generateButton.addEventListener('click', async () => {
+                responseInput.value = "";
+                const jobRole = jobRoleInput.value.trim();
+                if (!jobRole) {
+                    errorMessage.textContent = "Please select a job role!";
+                    errorMessage.style.display = "block";
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`https://pc2s70d9sg.execute-api.us-east-1.amazonaws.com/prod/questions?jobRole=${encodeURIComponent(jobRole)}`);
+                    if (!response.ok) throw new Error(`Error ${response.status}: Failed to fetch questions`);
+                    const result = await response.json();
+                    let parsedBody = typeof result.body === "string" ? JSON.parse(result.body) : result.body;
+                    if (parsedBody.questions) {
+                        questionText.textContent = parsedBody.questions[Math.floor(Math.random() * parsedBody.questions.length)];
+                        errorMessage.style.display = "none";
+                    } else {
+                        throw new Error("Questions data is not in the expected format");
+                    }
+                } catch (error) {
+                    console.error("Error fetching questions:", error);
+                    errorMessage.textContent = error.message;
+                    errorMessage.style.display = "block";
+                }
+            });
+
+            // ✅ Save Response to DynamoDB with Correct Nested JSON Format
+            submitAnswerButton.addEventListener('click', async () => {
+                const responseText = responseInput.value.trim();
+                const jobRole = jobRoleInput.value.trim();
+                const question = questionText.textContent;
+                const timestamp = Date.now();
+                const userId = "12345";
+
+                if (!responseText) {
+                    errorMessage.textContent = "Please enter a response!";
+                    errorMessage.style.display = "block";
+                    return;
+                }
+
+                // 🛠 Correct JSON format for DynamoDB
+                const payload = {
+                    body: JSON.stringify({
+                        userId: "userId",
+                        response: responseText,
+                        jobRole: jobRole
+                    })
+                };
+
+                try {
+                    console.log("Submitting Response to API:", JSON.stringify(payload)); // Debugging log
+
+                    const response = await fetch("https://ldze6rg09i.execute-api.us-east-1.amazonaws.com/prod/optional", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload),  // ✅ Now sending a simple JSON object
+                    });
+
+                    const data = await response.json();
+                    console.log("API Response:", data);
+
+                    if (!response.ok) throw new Error(data.error || "Failed to submit response");
+
+                    responseMessage.textContent = "Response submitted successfully!";
+                    responseMessage.style.display = "block";
+                    errorMessage.style.display = "none";
+                } catch (error) {
+                    console.error("Submission error:", error);
+                    errorMessage.textContent = "Error submitting response. Please try again later.";
+                    errorMessage.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

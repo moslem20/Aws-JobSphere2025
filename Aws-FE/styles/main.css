@@ -1,0 +1,402 @@
+/* Modern and beautiful styles for JobSphere AI */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f9f9f9, #e3e3e3);
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin: 0 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff9900;
+}
+
+main {
+    padding: 50px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background-color: #cc7700;
+    transform: translateY(-3px);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    margin-top: 50px;
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .btn {
+        font-size: 1rem;
+    }
+    nav ul li {
+        margin: 0 15px;
+    }
+}
+/* Modern CSS for Simulation Page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff9900;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.simulation-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+}
+
+.simulation-container h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #666;
+}
+
+select, button {
+    margin-top: 10px;
+    padding: 15px;
+    width: 100%;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+button {
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(255, 153, 0, 0.3);
+}
+
+button:hover {
+    background-color: #cc7700;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    margin-top: 50px;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .simulation-container {
+        width: 90%;
+    }
+}
+/* Modern and professional CSS for Simulation Page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff9900;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+.simulation-container {
+    background: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    text-align: center;
+}
+
+.simulation-container h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #666;
+}
+
+select, button, textarea {
+    margin-top: 20px;
+    padding: 18px;
+    width: 100%;
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+    font-size: 1.1rem;
+}
+
+button {
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(255, 153, 0, 0.3);
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #cc7700;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    margin-top: 50px;
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .simulation-container {
+        width: 90%;
+    }
+}
+main {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+select, textarea, button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkorange;
+}
+main {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+select, textarea, button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    font-size: 16px;
+}
+
+button {
+    background-color: orange;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: darkorange;
+}
+
+#responseMessage {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
